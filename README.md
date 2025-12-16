@@ -24,7 +24,7 @@ to obtain a commercial license.
   to keep single sheet cost under $150 (less when building for multiple sheets).
 - **✅ Easy fabrication**: 3D-printable enclosure and PCBs for hobbyist skill
   level assembly (or schematics for breadboard assembly).
-- **⏱️ Accurate timing**: millisecond-level accuracy for curling timing.
+- **⏱️ Accurate timing**: millisecond-level accuracy for splits.
 - **⚙️ Easy Setup and Use**: non-technical friendly setup and operation with
   guidance for setup and calibration provided in the web UI.
 - **👀 Full sheet support**: support dual split timing (back line to hog line,
