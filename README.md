@@ -47,7 +47,7 @@ to obtain a commercial license.
   - Hosts characteristics for state + events.
   - Pushes timing updates using **notifications**.
 
-- **Secondary Timer Devices - ESP32s = BLE Beacons/Peripherals**
+- **Secondary Timer Devices - ESP32s = ESP-NOW Sender**
   - Has an assigned sheet ID (via dip switches) for identification.
   - Has an assigned placement ID (via dip switches) for sheet position.
   - Communicates laser trip events via ESP-NOW protocol.
