@@ -56,14 +56,15 @@ the project hobbyist friendly).
 
 ![Piezo Buzzer Module](module-piezobuzzer.png)
 
-### TP4056 Battery Charger Module
+### TP4056 Battery Charger Module with 5V Step-Up
 
 The TP4056 battery charger module is used to charge the 18650 Li-ion battery. It
 is mounted separately from the main PCB to allow for use of a development board
 instead of integrating the charger and associated SMD components into the main
 PCB (keeping the project hobbyist friendly). It has a USB-C connector for easy
-charging. The module also includes two LED indicators for charging status, but
-does not provide a low power LED indicator.
+charging. The module also includes LED indicators for charging status. It has an
+integrated step-up converter to provide a regulated 5V output for the ESP32 dev
+board and other components.
 
 ![TP4056 Battery Charger Module](module-tp4056.png)
 

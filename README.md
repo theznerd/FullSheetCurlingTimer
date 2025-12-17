@@ -106,3 +106,8 @@ A single custom service which contains a small set of characteristics:
   be inconvenient or undesirable during practice.
 - It may be useful to calculate the rock speed at each trip point and include
   that in the event data sent to viewers.
+- **Timing accuracy note**: ESP-NOW retries/bursts improve delivery reliability
+  but can add variable *arrival latency*. To keep recorded split times accurate,
+  trip events should include a **sender-side capture timestamp** (taken at the
+  instant the beam transition is detected), and the main timer should map that
+  to its own clock using a lightweight beacon-based offset estimate.

@@ -16,8 +16,8 @@ Timer for a single sheet.
 | ESP32 Dev Board with IPEX Connector | 4 | ESP32-WROOM-32 or similar | [Amazon](https://www.amazon.com/dp/B0865YSHSS) | $5.50 | $22.00 | Ensure it has an IPEX connector for external antenna |
 | 2.4GHz Antenna | 4 | WiFi antenna with U.FL to Female SMA cable | [Amazon](https://www.amazon.com/dp/B0CD7LBJ3D) | $3.00 | $12.00 | 3dBi gain recommended |
 | 18650 Batteries | 4 | Rechargeable Li-ion batteries | [Amazon](https://www.amazon.com/dp/B0DF6CPJFR) | $5.75 | $23.00 | 3000mAh or higher |
-| 18650 Battery Holders | 4 | Single 18650 battery holder with leads | [Amazon](https://www.amazon.com/dp/B0DX1VJDBB) | $0.70 | $3.50 | Same as battery charger link, comes with 5 |
-| 18650 Battery Charger Module | 4 | TP4056 charger module with protection | [Amazon](https://www.amazon.com/dp/B0DX1VJDBB) | $0.70 | $3.50 | Same as battery holder link, comes with 5 |
+| 18650 Battery Holders | 4 | Single 18650 battery holder with leads | [Amazon](https://www.amazon.com/dp/B00LSG5BKO) | $0.80 | $8.00 | Pack comes with 10 |
+| 18650 Battery Charger Module | 4 | TP4056 charger module with protection and 5V step-up | [Amazon](https://www.amazon.com/dp/B0DFXWX7QM) | $0.90 | $9.00 | Pack comes with 10 |
 | Laser Diode Module | 4 | 650nm red laser module | [Amazon](https://www.amazon.com/dp/B071FT9HSV) | $0.68 | $6.80 | Pack comes with 10 |
 | 5MM Phototransistor | 4 | Light-sensitive phototransistor | [Amazon](https://www.amazon.com/dp/B00M1PMHO4) | $0.29 | $5.79 | Pack comes with 20 |
 | LM393 Comparator | 4 | LM393-based light sensor module | [Amazon](https://www.amazon.com/dp/B0FPQP47M5) | $0.13 | $6.50 | Pack comes with 50 |
