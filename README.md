@@ -35,7 +35,7 @@ to obtain a commercial license.
   with Web Bluetooth support (e.g., Chrome, Edge) - no cloud services, no
   complicated Wi-Fi setup for devices.
 
-## BLE Architecture (Multi-viewer)
+## Architecture (Multi-viewer)
 
 ### Roles and data flow
 
@@ -62,7 +62,7 @@ to obtain a commercial license.
 This pattern supports multiple viewers concurrently: each viewer connects and
 enables notifications independently.
 
-### Advertising / device identification
+### BLE Advertising For Viewer Discovery
 
 To make it easy to pick the right timer when multiple devices are nearby, each
 device should include clear identity in advertising:
@@ -95,6 +95,13 @@ A single custom service which contains a small set of characteristics:
   - Commands from a viewer to the ESP32 (e.g., `reset`, `delete last time`,
     `set direction`).
   - If reverse control is not needed, this characteristic can be omitted.
+
+### Device-to-Device ESP-NOW Communication Model
+
+ESP-NOW is the proposed protocol for communication between the laser sensors
+and the main timer device. ESP-NOW was considered over BLE Advertising due to
+better reliability and lower latency. Implementation details are discussed in
+the [firmware design decisions](design_decisions.md) document.
 
 ### Notes for future consideration
 
