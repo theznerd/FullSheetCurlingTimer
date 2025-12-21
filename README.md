@@ -92,7 +92,7 @@ the [firmware design decisions](design_decisions.md) document.
   iOS browsers are forced to use WebKit (with the exception of EU member
   states). Therefore, iOS support is not feasible with the current Web Bluetooth
   API limitations. Need to switch to a native app, which will bring added
-  complexity. Looking at React Native for now.
+  complexity. Looking at Avalonia for cross-platform native app development.
 - It is possible to infer the direction of travel from the sequence of laser
   trip events, so that a stone passing the opposing back line does not cause a
   new timing event. However, this may be error-prone if stones are being thrown
