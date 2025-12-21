@@ -148,4 +148,23 @@ sheets are active.
 
 The main timer device acts as a BLE GATT server, advertising a custom "Timer
 Service" for viewer devices (browsers) to connect to and receive timing updates
-via notifications.
+via notifications. The GATT Server should host a small set of characteristics:
+
+- **Timer Events** (`Notify`)
+  - Streams *incremental* one-way event updates (laser trips, split times,
+    rock speed, etc.).
+  - Viewers subscribe once; Main Timer ESP32 pushes updates when they occur.
+  - Events should include a monotonically increasing sequence number so clients
+    can detect gaps.
+
+- **Timer State** (`Read` + `Notify`)
+  - A bounded *snapshot* of the current timer state (idle/running/finished),
+    direction, current/last time, etc.
+  - Includes **recent history** (e.g., up to **N** most recent recorded times)
+    so late-joining/reconnected viewers can render immediately.
+  - Keep this payload compact and capped (fixed max N) so it remains fast to
+    read/notify.
+
+- **Control** (`Write`, optional)
+  - Commands from a viewer to the ESP32 (e.g., `reset`, `delete last time`,
+    `set direction`).

@@ -74,27 +74,11 @@ device should include clear identity in advertising:
 
 ### GATT Service Model (proposed)
 
-A single custom service which contains a small set of characteristics:
-
-- **Timer Events** (`Notify`)
-  - Streams *incremental* one-way event updates (laser trips, split times,
-    etc.).
-  - Viewers subscribe once; ESP32 pushes updates when they occur.
-  - Events should include a monotonically increasing sequence number so clients
-    can detect gaps.
-
-- **Timer State** (`Read` + `Notify`)
-  - A bounded *snapshot* of the current timer state (idle/running/finished),
-    direction, current/last time, etc.
-  - Includes **recent history** (e.g., up to **N** most recent recorded times)
-    so late-joining/reconnected viewers can render immediately.
-  - Keep this payload compact and capped (fixed max N) so it remains fast to
-    read/notify.
-
-- **Control** (`Write`, optional)
-  - Commands from a viewer to the ESP32 (e.g., `reset`, `delete last time`,
-    `set direction`).
-  - If reverse control is not needed, this characteristic can be omitted.
+GATT is used for structured data exchange between the timer device and viewer.
+GATT is well-suited for this use case due to its support in mobile browsers via
+the Web Bluetooth API, and its efficient notification mechanism for real-time
+updates. Implementation details are discussed in the
+[firmware design decisions](design_decisions.md) document.
 
 ### Device-to-Device ESP-NOW Communication Model
 

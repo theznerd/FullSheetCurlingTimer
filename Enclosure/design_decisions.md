@@ -19,10 +19,10 @@ protection and proper alignment for accurate operation.
 
 ## Current Needs Before Design
 
-- [ ] **PCB Design**: Finalize the PCB design to determine exact mounting points and
-  dimensions for the enclosure.
-- [ ] **Component Dimensions**: Verify the dimensions of all components for accurate
-  enclosure design.
+- [ ] **PCB Design**: Finalize the PCB design to determine exact mounting points
+  and dimensions for the enclosure.
+- [ ] **Component Dimensions**: Verify the dimensions of all components for
+  accurate enclosure design.
 
 ## Involved Components
 
@@ -49,10 +49,11 @@ are not changed frequently.
 
 ### Piezo Buzzer Module
 
-The piezo buzzer module provides audio feedback for the timer. It is mounted
-separately from the main PCB to allow for use of a development board instead of
-integrating the buzzer and associated SMD components into the main PCB (keeping
-the project hobbyist friendly).
+The piezo buzzer module is used to provide audio feedback for user interactions
+such as power on/off and timing events. The buzzer is mounted on the main PCB
+and positioned within the enclosure to allow sound to escape effectively. The
+buzzer is an active type, meaning it includes an internal oscillator and only
+requires a DC voltage to operate.
 
 ![Piezo Buzzer Module](module-piezobuzzer.png)
 

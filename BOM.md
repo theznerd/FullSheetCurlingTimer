@@ -17,14 +17,14 @@ Timer for a single sheet.
 | 2.4GHz Antenna | 4 | WiFi antenna with U.FL to Female SMA cable | [Amazon](https://www.amazon.com/dp/B0CD7LBJ3D) | $3.00 | $12.00 | 3dBi gain recommended |
 | 18650 Batteries | 4 | Rechargeable Li-ion batteries | [Amazon](https://www.amazon.com/dp/B0DF6CPJFR) | $5.75 | $23.00 | 3000mAh or higher |
 | 18650 Battery Holders | 4 | Single 18650 battery holder with leads | [Amazon](https://www.amazon.com/dp/B00LSG5BKO) | $0.80 | $8.00 | Pack comes with 10 |
-| 18650 Battery Charger Module | 4 | TP4056 charger module with protection and 5V step-up | [Amazon](https://www.amazon.com/dp/B0DFXWX7QM) | $0.90 | $9.00 | Pack comes with 10 |
+| 18650 Battery Charger Module | 4 | TP4056 charger module with protection and 5V step-up | [Amazon](https://www.amazon.com/gp/product/B0BJYRGZR4) | $1.00 | $10.00 | Pack comes with 10 |
 | Laser Diode Module | 4 | 650nm red laser module | [Amazon](https://www.amazon.com/dp/B071FT9HSV) | $0.68 | $6.80 | Pack comes with 10 |
 | 5MM Phototransistor | 4 | Light-sensitive phototransistor | [Amazon](https://www.amazon.com/dp/B00M1PMHO4) | $0.29 | $5.79 | Pack comes with 20 |
-| LM393 Comparator | 4 | LM393-based light sensor module | [Amazon](https://www.amazon.com/dp/B0FPQP47M5) | $0.13 | $6.50 | Pack comes with 50 |
+| LM393 Comparator | 4 | LM393-based light sensor module | [Amazon](https://www.amazon.com/dp/B0FPQP47M5) | $0.40 | $8.00 | Pack comes with 20 |
 | Various Resistors | N/A | Various resistors for voltage dividers and pull-ups | [Amazon](https://www.amazon.com/dp/B08FD1XVL6) | N/A | $10.00 | Pack comes with assorted values, and way too many. Will optimize later based on actual schematic needs. |
 | Various Capacitors | N/A | Various capacitors for power smoothing | [Amazon](https://www.amazon.com/dp/B07PBQXQNQ) | N/A | $17.00 | Pack comes with assorted values, and way too many. Will optimize later based on actual schematic needs. |
 | Rocker Switch | 4 | SPST rocker switch for power control | [Amazon](https://www.amazon.com/dp/B0CVTRKJTV) | $0.75 | $6.00 | Pack comes with 8 |
-| Piezo Buzzer | 4 | Active piezo buzzer for audio feedback | [Amazon](https://www.amazon.com/dp/B0D8BBPV2S) | $1.40 | $7.00 | Pack comes with 5 |
+| Piezo Buzzer | 4 | Active piezo buzzer for audio feedback | [Amazon](https://www.amazon.com/gp/product/B0F1KCZGZG) | $0.40 | $8.00 | Pack comes with 20 |
 | 5 position DIP Switch | 4 | 5-position DIP switch for ID configuration | [Amazon](https://www.amazon.com/dp/B082GMFTKZ) | $0.65 | $6.50 | Pack comes with 10 |
 | Engineering Grade Retroreflective Tape | 1 | 1" x 30' roll for laser reflection | [Amazon](https://www.amazon.com/dp/B079DC1DK8) | $13.80 | $13.80 | Cut into smaller pieces as needed |
 
@@ -39,6 +39,10 @@ them individually:
 | Resistor | 4 | 1MΩ | LM393 Hysteresis feedback |
 | Resistor | 4 | 1kΩ | Laser current limiting |
 | Capacitor | 8 | 0.1µF | LM393 Power supply decoupling and ESP32 GPIO noise suppression |
+
+> NOTE: Above list does not yet include resistors for voltage dividers on ESP32
+> ADC input for battery-voltage monitoring. Will update once those values are
+> determined.
 
 ## PCB Fabrication
 
