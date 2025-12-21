@@ -62,14 +62,11 @@ to the phototransistor in the device.
 
 ### Connection to Viewer
 
-Users should connect to the main timer device using a modern web browser that
-supports the Web Bluetooth API (e.g., Chrome, Edge). This web interface will be
-hosted online and accessible via a URL provided in the documentation (or via
-QR code on the device/enclosure). The web UI will guide users through scanning
-for nearby timer devices, selecting the correct one based on advertised name,
-and connecting to it. Once connected, the web UI will display the current timer
-state and provide controls for validating the orientation/alignment of the laser
-sensors and retroreflectors.
+Users should connect to the main timer device using the provided native app,
+This app will guide users through scanning for nearby timer devices, selecting
+the correct one based on advertised name, and connecting to it. Once connected,
+the native app will display the current timer state and provide controls for
+validating the orientation/alignment of the laser sensors and retroreflectors.
 
 ## Operation Journeys
 
@@ -94,7 +91,7 @@ positive or negative on their throw speed and by how much.
 
 ### Viewing Results
 
-The web UI connected to the main timer device will display timing results in
+The native app connected to the main timer device will display timing results in
 real-time as the stone crosses each laser sensor. The UI will show the split
 times for back line to hog line and hog line to hog line, as well as the
 approximate stone speed based on laser break and restore times. The UI will
@@ -104,21 +101,21 @@ issues encountered during timing.
 ### Resetting the Timer
 
 In the event of a false start, accidental trips, or if the stone does not cross
-the opposing hog line, the user can reset the timer via the web UI. If the user
-prefers to wait, a new delivery can be started by simply crossing the back line
-laser again after the debounce period has elapsed. Partial times will still be
-available in the web UI for review, but can be cleared from the web UI if
-desired.
+the opposing hog line, the user can reset the timer via the native app. If the
+user prefers to wait, a new delivery can be started by simply crossing the back
+line laser again after the debounce period has elapsed. Partial times will still
+be available in the native app for review, but can be cleared from the native
+app if desired.
 
 ## Maintenance Journeys
 
 ### Battery Charge Monitoring
 
-The web UI can provide a battery charge status indicator based on voltage
+The native app can provide a battery charge status indicator based on voltage
 readings from an adc pin on the ESP32 connected to the battery voltage divider.
 The voltage divider solution is not highly accurate, but should provide a rough
-indication of battery health. Users can monitor this status in the web UI and
-be alerted when the battery charge is low and needs recharging.
+indication of battery health. Users can monitor this status in the native app
+and be alerted when the battery charge is low and needs recharging.
 
 ### Battery Replacement
 

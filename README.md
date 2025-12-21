@@ -31,9 +31,9 @@ to obtain a commercial license.
   and hog line to hog line) and bi-directional throws without moving hardware.
 - **👨‍👩‍👧‍👦 Multi-viewer support**: allow multiple phones/tablets to connect and view
   timing data simultaneously.
-- **🌐 Web-based UI**: simple web interface accessible from any modern browser
-  with Web Bluetooth support (e.g., Chrome, Edge) - no cloud services, no
-  complicated Wi-Fi setup for devices.
+- **🌐 Native App**: simple native app accessible from any modern platform
+  with Bluetooth support - no cloud services, no complicated Wi-Fi setup for
+  devices.
 
 ## Architecture (Multi-viewer)
 
@@ -75,9 +75,8 @@ device should include clear identity in advertising:
 ### GATT Service Model (proposed)
 
 GATT is used for structured data exchange between the timer device and viewer.
-GATT is well-suited for this use case due to its support in mobile browsers via
-the Web Bluetooth API, and its efficient notification mechanism for real-time
-updates. Implementation details are discussed in the
+GATT is well-suited for this use case due to its efficient notification
+mechanism for real-time updates. Implementation details are discussed in the
 [firmware design decisions](design_decisions.md) document.
 
 ### Device-to-Device ESP-NOW Communication Model
@@ -89,6 +88,11 @@ the [firmware design decisions](design_decisions.md) document.
 
 ### Notes for future consideration
 
+- WebKit has no support (actively opposes) for the Web Bluetooth API, and all
+  iOS browsers are forced to use WebKit (with the exception of EU member
+  states). Therefore, iOS support is not feasible with the current Web Bluetooth
+  API limitations. Need to switch to a native app, which will bring added
+  complexity. Looking at React Native for now.
 - It is possible to infer the direction of travel from the sequence of laser
   trip events, so that a stone passing the opposing back line does not cause a
   new timing event. However, this may be error-prone if stones are being thrown
