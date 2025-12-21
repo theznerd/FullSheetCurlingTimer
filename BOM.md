@@ -4,7 +4,7 @@
 
 **VERSION:** 0.1
 
-**LAST UPDATED:** 2025-12-16
+**LAST UPDATED:** 2025-12-20
 
 This document lists the components required to build the Full Sheet Curling
 Timer for a single sheet.
