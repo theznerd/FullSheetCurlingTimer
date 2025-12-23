@@ -1,0 +1,198 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:FSCT.Mobile.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="1284" d:DesignHeight="2778"
+             x:Class="FSCT.Mobile.Views.MainView"
+             x:DataType="vm:MainViewModel">
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <vm:MainViewModel />
+  </Design.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.15*"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Background Image -->
+        <Image Source="avares://FSCT.Mobile/Assets/Background.png" 
+               Grid.Row="0" Grid.RowSpan="2"
+               Opacity="1"
+               Stretch="UniformToFill" 
+               HorizontalAlignment="Stretch" 
+               VerticalAlignment="Stretch"
+               Margin="0"/>
+        
+        <Rectangle Grid.RowSpan="2" Opacity="1">
+			<Rectangle.Fill>
+                 <LinearGradientBrush StartPoint="50%,0%" EndPoint="50%,100%">
+                    <GradientStop Color="#FFE7E5DF" Offset="0.2"/>
+                    <GradientStop Color="#AAE7E5DF" Offset="1.0"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="0.33*" />
+                <RowDefinition Height="0.57*"/>
+            </Grid.RowDefinitions>
+            
+            <!-- Status Display -->
+            <Viewbox Grid.Row="0" Stretch="Uniform" Margin="15">
+                <StackPanel>
+                    <TextBlock Text="Status" FontSize="8" HorizontalAlignment="Center"/>
+    				<TextBlock Text="Timing" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />	
+                </StackPanel>            
+            </Viewbox>
+
+            <!-- Hero Modal for Current Time -->
+            <Grid Grid.Row="1">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="0.5*"/>
+                    <RowDefinition Height="0.5*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                </Grid.ColumnDefinitions>
+                    
+                <!-- Back To Hog Time -->
+                <Border CornerRadius="10" Background="#E7E5DF" Margin="10">
+                    <Border.Effect>
+                        <DropShadowEffect
+                            OffsetX="1"
+                            OffsetY="1"
+                            BlurRadius="5"
+                            Color="#393E41"
+                            Opacity="0.5" />
+                    </Border.Effect>
+                    <Viewbox Stretch="Uniform">
+                        <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10">
+                            <TextBlock Text="Back → Hog" FontSize="15" HorizontalAlignment="Center" Margin="5,0"/>
+                            <TextBlock Text="{Binding CurrentCurlingTime.BackLineToHogLineMillisecondsString}" FontSize="35" HorizontalAlignment="Center" />
+                        </StackPanel>						
+                    </Viewbox>
+                </Border>
+
+                <!-- Hog To Hog Time -->
+                <Border Grid.Row="1" Grid.Column="0" CornerRadius="10" Background="#E7E5DF" Margin="10">
+                    <Border.Effect>
+                        <DropShadowEffect
+                            OffsetX="1"
+                            OffsetY="1"
+                            BlurRadius="5"
+                            Color="#393E41"
+                            Opacity="0.5" />
+                    </Border.Effect>
+                    <Viewbox Stretch="Uniform">
+                        <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10">
+                            <TextBlock Text="Hog → Hog" FontSize="15" HorizontalAlignment="Center" Margin="5,0"/>
+                            <TextBlock Text="{Binding CurrentCurlingTime.HogLineToHogLineMillisecondsString}" FontSize="35" HorizontalAlignment="Center" />
+                        </StackPanel>						
+                    </Viewbox>
+                </Border>
+
+                <!-- Speed @ Hog -->
+                <Border Grid.Row="0" Grid.Column="1" CornerRadius="10" Background="#E7E5DF" Margin="10">
+                    <Border.Effect>
+                        <DropShadowEffect
+                            OffsetX="1"
+                            OffsetY="1"
+                            BlurRadius="5"
+                            Color="#393E41"
+                            Opacity="0.5" />
+                    </Border.Effect>
+                    <Viewbox Stretch="Uniform">
+                        <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10">
+                            <TextBlock Text="Speed @ Hog" FontSize="15" HorizontalAlignment="Center" Margin="5,0"/>
+                            <TextBlock Text="{Binding CurrentCurlingTime.HogLineStoneSpeedString}" FontSize="35" HorizontalAlignment="Center" />
+                        </StackPanel>						
+                    </Viewbox>
+                </Border>
+
+                <!-- Weight Accuracy -->
+                <Border Grid.Row="1" Grid.Column="1" CornerRadius="10" Background="#E7E5DF" Margin="10">
+                    <Border.Effect>
+                        <DropShadowEffect
+                            OffsetX="1"
+                            OffsetY="1"
+                            BlurRadius="5"
+                            Color="#393E41"
+                            Opacity="0.5" />
+                    </Border.Effect>
+                    <Viewbox Stretch="Uniform">
+                        <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10">
+                            <TextBlock Text="Weight Accuracy" FontSize="15" HorizontalAlignment="Center" Margin="5,0"/>
+                            <TextBlock Text="{Binding CurrentCurlingTime.HogLineStoneSpeedAccuracyString}" FontSize="35" HorizontalAlignment="Center" />
+                        </StackPanel>						
+                    </Viewbox>
+                </Border>
+            </Grid>
+
+            <!-- Shot History -->
+               <ScrollViewer Grid.Row="2">
+               <Viewbox Stretch="Uniform" Margin="10" VerticalAlignment="Top">
+				   <ItemsControl ItemsSource="{Binding CurlingTimes}">
+                       <ItemsControl.ItemTemplate>
+                           <DataTemplate DataType="vm:CurlingTimeViewModel">
+                               <Border CornerRadius="10" Background="#E7E5DF" Margin="5">
+                                    <Border.Effect>
+                                        <DropShadowEffect
+                                            OffsetX="1"
+                                            OffsetY="1"
+                                            BlurRadius="5"
+                                            Color="#393E41"
+                                            Opacity="0.5" />
+                                    </Border.Effect>
+                                    <Grid Width="350">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="0.33*" />
+                                            <RowDefinition Height="0.67*" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+									        <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Grid.Row="0" Text="Back → Hog" FontSize="12" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                                        <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding BackLineToHogLineMillisecondsString}" FontSize="20" HorizontalAlignment="Center" />
+                                        <TextBlock Grid.Column="1" Grid.Row="0" Text="Hog → Hog" FontSize="12" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                                        <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding HogLineToHogLineMillisecondsString}" FontSize="20" HorizontalAlignment="Center" />
+                                        <TextBlock Grid.Column="2" Grid.Row="0" Text="Speed @ Hog" FontSize="12" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                                        <TextBlock Grid.Column="2" Grid.Row="1" Text="{Binding HogLineStoneSpeedString}" FontSize="20" HorizontalAlignment="Center" />
+                                        <TextBlock Grid.Column="3" Grid.Row="0" Text="Accuracy" FontSize="12" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                                        <TextBlock Grid.Column="3" Grid.Row="1" Text="{Binding HogLineStoneSpeedAccuracyString}" FontSize="20" HorizontalAlignment="Center" />
+                                    </Grid>
+                                </Border>
+                           </DataTemplate>
+                       </ItemsControl.ItemTemplate>
+                   </ItemsControl>
+                   </Viewbox>
+               </ScrollViewer>
+        </Grid>
+        
+        <!-- Controls -->
+        <Grid Grid.Row="1">
+            <Grid.Background>
+				<LinearGradientBrush StartPoint="50%,0%" EndPoint="50%,100%">
+                    <GradientStop Color="#00393E41" Offset="0.0"/>
+                    <GradientStop Color="#FF393E41" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Viewbox Stretch="Uniform">
+                <StackPanel Orientation="Horizontal">
+                    <Button Foreground="#D3D0CB" Content="&#xF0E2;" FontSize="40" FontFamily="{StaticResource FontAwesome}" CornerRadius="5" Background="#F44E3F" Width="100" Height="80" Margin="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                    <Button Foreground="#D3D0CB" Content="&#xF1F8;" FontSize="40" FontFamily="{StaticResource FontAwesome}" CornerRadius="5" Background="#F44E3F" Width="100" Height="80" Margin="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                    <Button Foreground="#D3D0CB" Content="&#xF013;" FontSize="40" FontFamily="{StaticResource FontAwesome}" CornerRadius="5" Background="#F44E3F" Width="100" Height="80" Margin="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                </StackPanel>
+            </Viewbox>
+        </Grid>
+    </Grid>
+</UserControl>

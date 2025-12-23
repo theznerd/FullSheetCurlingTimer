@@ -106,3 +106,8 @@ the [firmware design decisions](design_decisions.md) document.
   trip events should include a **sender-side capture timestamp** (taken at the
   instant the beam transition is detected), and the main timer should map that
   to its own clock using a lightweight beacon-based offset estimate.
+
+## Wish List
+
+- [ ] Apple WatchOS App for on-ice timing
+- [ ] Garmin Connect IQ App for on-ice timing
