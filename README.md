@@ -77,14 +77,14 @@ device should include clear identity in advertising:
 GATT is used for structured data exchange between the timer device and viewer.
 GATT is well-suited for this use case due to its efficient notification
 mechanism for real-time updates. Implementation details are discussed in the
-[firmware design decisions](design_decisions.md) document.
+[firmware design decisions](Firmware/design_decisions.md) document.
 
 ### Device-to-Device ESP-NOW Communication Model
 
 ESP-NOW is the proposed protocol for communication between the laser sensors
 and the main timer device. ESP-NOW was considered over BLE Advertising due to
 better reliability and lower latency. Implementation details are discussed in
-the [firmware design decisions](design_decisions.md) document.
+the [firmware design decisions](Firmware/design_decisions.md) document.
 
 ### Notes for future consideration
 
