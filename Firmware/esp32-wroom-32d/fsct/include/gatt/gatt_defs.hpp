@@ -1,0 +1,53 @@
+#pragma once
+#include <cstdint>
+#include "host/ble_uuid.h"
+
+namespace FSCT {
+    // UUIDs for the FSCT BLE Service and Characteristics
+    // NimBLE expects UUIDs in Little Endian order (reversed)
+    
+    // Service UUID: 4375726c-696e-6720-5469-6d6572000000 ("Curling Timer" in ASCII)
+    // Reversed: 00 00 00 72 65 6d 69 54 20 67 6e 69 6c 72 75 43
+    static const ble_uuid128_t FSCT_SERVICE_UUID =
+        BLE_UUID128_INIT(0x00, 0x00, 0x00, 0x72, 0x65, 0x6d, 0x69, 0x54,
+                         0x20, 0x67, 0x6e, 0x69, 0x6c, 0x72, 0x75, 0x43);
+
+    // Characteristic UUIDs
+    static const ble_uuid128_t CHR_HISTORY_UUID = 
+        BLE_UUID128_INIT(0x01, 0x00, 0x00, 0x72, 0x65, 0x6d, 0x69, 0x54,
+                         0x20, 0x67, 0x6e, 0x69, 0x6c, 0x72, 0x75, 0x43);
+    
+    static const ble_uuid128_t CHR_STATE_UUID = 
+        BLE_UUID128_INIT(0x02, 0x00, 0x00, 0x72, 0x65, 0x6d, 0x69, 0x54,
+                         0x20, 0x67, 0x6e, 0x69, 0x6c, 0x72, 0x75, 0x43);
+
+    static const ble_uuid128_t CHR_LIVE_UUID = 
+        BLE_UUID128_INIT(0x03, 0x00, 0x00, 0x72, 0x65, 0x6d, 0x69, 0x54,
+                         0x20, 0x67, 0x6e, 0x69, 0x6c, 0x72, 0x75, 0x43);
+
+    static const ble_uuid128_t CHR_COMMAND_UUID = 
+        BLE_UUID128_INIT(0x04, 0x00, 0x00, 0x72, 0x65, 0x6d, 0x69, 0x54,
+                         0x20, 0x67, 0x6e, 0x69, 0x6c, 0x72, 0x75, 0x43);
+                         
+    static const ble_uuid128_t CHR_DIAG_UUID = 
+        BLE_UUID128_INIT(0x05, 0x00, 0x00, 0x72, 0x65, 0x6d, 0x69, 0x54,
+                         0x20, 0x67, 0x6e, 0x69, 0x6c, 0x72, 0x75, 0x43);
+
+    // Command Definitions
+    enum class CommandOpCode : uint8_t {
+        RESET_TIMER = 0x01,
+        DELETE_LAST_TIME = 0x02
+    };
+
+    struct CommandPacket {
+        CommandOpCode opcode;
+        uint8_t parameters[7]; // Optional parameters
+    } __attribute__((packed));
+
+    // State Defitions
+    enum class TimerState : uint8_t {
+        IDLE = 0x00,
+        ERROR = 0x01,
+        TIMING = 0x02
+    };
+}
