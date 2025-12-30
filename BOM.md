@@ -2,9 +2,9 @@
 
 **STATUS:** INITIAL DRAFT - DO NOT USE FOR PROCUREMENT
 
-**VERSION:** 0.1
+**VERSION:** 0.2
 
-**LAST UPDATED:** 2025-12-20
+**LAST UPDATED:** 2025-12-30
 
 This document lists the components required to build the Full Sheet Curling
 Timer for a single sheet.
@@ -12,7 +12,7 @@ Timer for a single sheet.
 ## Electronic and Mechanical Components
 
 | Component | Quantity | Description | Link | Price (each) | Total Price | Notes |
-|-----------|----------|-------------|------|--------------|-------------|-------|
+| --------- | -------- | ----------- | ---- | ------------ | ----------- | ----- |
 | ESP32 Dev Board with IPEX Connector | 4 | ESP32-WROOM-32 or similar | [Amazon](https://www.amazon.com/dp/B0865YSHSS) | $5.50 | $22.00 | Ensure it has an IPEX connector for external antenna |
 | 2.4GHz Antenna | 4 | WiFi antenna with U.FL to Female SMA cable | [Amazon](https://www.amazon.com/dp/B0CD7LBJ3D) | $3.00 | $12.00 | 3dBi gain recommended |
 | 18650 Batteries | 4 | Rechargeable Li-ion batteries | [Amazon](https://www.amazon.com/dp/B0DF6CPJFR) | $5.75 | $23.00 | 3000mAh or higher |
@@ -25,6 +25,8 @@ Timer for a single sheet.
 | Various Capacitors | N/A | Various capacitors for power smoothing | [Amazon](https://www.amazon.com/dp/B07PBQXQNQ) | N/A | $17.00 | Pack comes with assorted values, and way too many. Will optimize later based on actual schematic needs. |
 | Rocker Switch | 4 | SPST rocker switch for power control | [Amazon](https://www.amazon.com/dp/B0CVTRKJTV) | $0.75 | $6.00 | Pack comes with 8 |
 | Piezo Buzzer | 4 | Active piezo buzzer for audio feedback | [Amazon](https://www.amazon.com/dp/B0F1KCZGZG) | $0.40 | $8.00 | Pack comes with 20 |
+| BC337 NPN Transistor | 4 | General purpose NPN transistor to drive Piezo | [Amazon](https://www.amazon.com/dp/B07T61SY9Y) | $0.04 | $9.00 | Pack comes with assorted transistors, and way too many. Will optimize later based on actual schematic needs. |
+| Single Row Female Header Pins | 4 | 19-pin single row (1x19) | [Amazon](https://www.amazon.com/dp/B07CGGSDWF) | $0.17 | $10.00 | Pack comes with 60 pins |
 | 5 position DIP Switch | 4 | 5-position DIP switch for ID configuration | [Amazon](https://www.amazon.com/dp/B082GMFTKZ) | $0.65 | $6.50 | Pack comes with 10 |
 | Engineering Grade Retroreflective Tape | 1 | 1" x 30' roll for laser reflection | [Amazon](https://www.amazon.com/dp/B079DC1DK8) | $13.80 | $13.80 | Cut into smaller pieces as needed |
 
@@ -33,16 +35,13 @@ actually needed. The actual required values are as follows if you can source
 them individually:
 
 | Component | Quantity | Value | Purpose |
-|-----------|----------|-------|---------|
+| --------- | -------- | ----- | ------- |
 | Resistor | 8 | 10kΩ | LM393 Output and Phototransistor pull-up to 3.3v |
-| Resistor | 8 | 100kΩ | LM393 1.65v reference divider |
+| Resistor | 12 | 100kΩ | LM393 1.65v reference divider, Battery ADC voltage divider |
+| Resistor | 4 | 47kΩ | Battery ADC voltage divider |
 | Resistor | 4 | 1MΩ | LM393 Hysteresis feedback |
-| Resistor | 4 | 1kΩ | Laser current limiting |
+| Resistor | 4 | 1kΩ | GPIO to BC337 current limiting |
 | Capacitor | 8 | 0.1µF | LM393 Power supply decoupling and ESP32 GPIO noise suppression |
-
-> NOTE: Above list does not yet include resistors for voltage dividers on ESP32
-> ADC input for battery-voltage monitoring. Will update once those values are
-> determined.
 
 ## PCB Fabrication
 
@@ -53,9 +52,8 @@ enclosure models are designed to fit the PCB form factor and to properly align
 the laser and phototransistor components.
 
 | Service | Quantity | Price per PCB | Total Price | Notes |
-|---------|----------|---------------|-------------|-------|
-
-\#\#\# TO BE DETERMINED
+| ------- | -------- | ------------- | ----------- | ----- |
+| JLCPCB | 20 | $2.80 | $56.10 | Good coupons for new users, this was including fast shipping as well |
 
 ## Sensor Enclosure and Reflector 3D Prints
 

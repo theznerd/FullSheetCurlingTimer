@@ -6723,7 +6723,7 @@
 				)
 			)
 		)
-		(property "Value" "NPN"
+		(property "Value" "BC337"
 			(at 134.62 69.85 90)
 			(effects
 				(font
