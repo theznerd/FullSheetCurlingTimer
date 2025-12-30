@@ -4,6 +4,9 @@
 #include "gpio/gpiostartup.hpp"
 #include "gatt/gattstartup.hpp"
 #include "nvs_flash.h"
+#include "driver/gpio.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
 
 extern "C" void app_main(void) {
     // NVS initialization for ESP-NOW
@@ -40,4 +43,13 @@ extern "C" void app_main(void) {
     int battery_percent = 0;
     ESP_ERROR_CHECK(battery_adc_read_percent(&battery_percent));
     ESP_LOGI("FSCTMain", "Battery Percentage: %d %%", battery_percent);
+
+    // Beep the piezo three times
+    for(int i = 0; i < 3; i++) {
+        ESP_LOGI("FSCTMain", "Beep %d", i+1);
+        gpio_set_level(GPIO_NUM_19, 1); // Buzzer ON
+        vTaskDelay(50 / portTICK_PERIOD_MS);
+        gpio_set_level(GPIO_NUM_19, 0); // Buzzer OFF
+        vTaskDelay(50 / portTICK_PERIOD_MS);
+    }
 }

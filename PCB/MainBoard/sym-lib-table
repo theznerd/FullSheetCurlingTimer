@@ -1,0 +1,6 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "BC327-40BK")(type "KiCad")(uri "${KIPRJMOD}/Libraries/BC327-40BK.kicad_sym")(options "")(descr ""))
+  (lib (name "CMI-1295IC-0585T")(type "KiCad")(uri "${KIPRJMOD}/Libraries/CMI-1295IC-0585T.kicad_sym")(options "")(descr ""))
+  (lib (name "LM393N")(type "KiCad")(uri "${KIPRJMOD}/Libraries/LM393N.kicad_sym")(options "")(descr ""))
+)
