@@ -35,7 +35,7 @@ void configure_gpios() {
     io_conf.pin_bit_mask = (1ULL << GPIO_NUM_21);
     io_conf.mode = GPIO_MODE_INPUT;
     // LM393 is open-collector; enable pull-up to ensure High state when beam is broken 
-    io_conf.pull_up_en = GPIO_PULLUP_ENABLE;
+    io_conf.pull_up_en = GPIO_PULLUP_DISABLE;
     io_conf.pull_down_en = GPIO_PULLDOWN_DISABLE;
     gpio_config(&io_conf);
 
