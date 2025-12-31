@@ -7235,7 +7235,7 @@
 	)
 	(dimension
 		(type orthogonal)
-		(layer "F.Cu")
+		(layer "Dwgs.User")
 		(uuid "84f26d8f-d1c2-4b5b-b1d2-a4aaf52ce7c7")
 		(pts
 			(xy 190.34276 79.5) (xy 190.34276 134)
@@ -7261,7 +7261,7 @@
 		)
 		(gr_text "54.5"
 			(at 193.54276 106.75 90)
-			(layer "F.Cu")
+			(layer "Dwgs.User")
 			(uuid "84f26d8f-d1c2-4b5b-b1d2-a4aaf52ce7c7")
 			(effects
 				(font
@@ -7273,7 +7273,7 @@
 	)
 	(dimension
 		(type orthogonal)
-		(layer "F.Cu")
+		(layer "Dwgs.User")
 		(uuid "951e19bc-48ac-4f39-a253-7810459b81f5")
 		(pts
 			(xy 109.34276 79.5) (xy 190.34276 79.5)
@@ -7299,7 +7299,7 @@
 		)
 		(gr_text "81"
 			(at 149.84276 73.2 0)
-			(layer "F.Cu")
+			(layer "Dwgs.User")
 			(uuid "951e19bc-48ac-4f39-a253-7810459b81f5")
 			(effects
 				(font

@@ -53,7 +53,8 @@ the laser and phototransistor components.
 
 | Service | Quantity | Price per PCB | Total Price | Notes |
 | ------- | -------- | ------------- | ----------- | ----- |
-| JLCPCB | 20 | $2.80 | $56.10 | Good coupons for new users, this was including fast shipping as well |
+| JLCPCB | 20 | $2.80 | $56.10 | Good coupons for new users, this was including fast shipping as well, price difference between 5 and 20 was negligible |
+| OSHPark | 6 | $11.40 | $68.40 | US based, comes at higher cost |
 
 ## Sensor Enclosure and Reflector 3D Prints
 
