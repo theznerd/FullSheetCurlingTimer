@@ -55,7 +55,14 @@ void beam_event_task(void* /*arg*/) {
 
         // Per gpio_startup(): Low = beam intact, High = beam broken
         ESP_LOGI(kBeamTag, "%s", level ? "BEAM BROKEN" : "beam restored");
+
+        // Beep the buzzer briefly on beam break/restored
+        gpio_set_level(GPIO_NUM_19, 1); // Buzzer ON
+        vTaskDelay(50 / portTICK_PERIOD_MS);
+        gpio_set_level(GPIO_NUM_19, 0); // Buzzer OFF
+
     }
+
 }
 
 void start_beam_demo() {

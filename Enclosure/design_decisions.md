@@ -19,7 +19,7 @@ protection and proper alignment for accurate operation.
 
 ## Current Needs Before Design
 
-- [ ] **PCB Design**: Finalize the PCB design to determine exact mounting points
+- [x] **PCB Design**: Finalize the PCB design to determine exact mounting points
   and dimensions for the enclosure.
 - [ ] **Component Dimensions**: Verify the dimensions of all components for
   accurate enclosure design.
@@ -34,6 +34,14 @@ board is attached to the back of the laser module that includes a resistor for
 current limiting and a positive and ground wire.
 
 ![Laser Diode Module](module-laserdiode.png)
+
+> NOTE: The reflector design was initially based on retroreflective tape, but
+> this was found to be unreliable at distances beyond 1-2 meters. The design has
+> been updated to use small bicycle retroreflectors for improved reliability.
+> Still need to field test this change - especially with bright overhead
+> lighting and reflective ice surfaces. An initial test of some rectangular
+> reflectors was unreliable at 3-4 meters, but a standard bicycle reflector
+> performed much more reliably.
 
 ### Main PCB Module
 

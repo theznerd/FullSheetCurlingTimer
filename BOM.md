@@ -2,10 +2,9 @@
 
 **STATUS:** INITIAL DRAFT - DO NOT USE FOR PROCUREMENT
 
-**VERSION:** 0.2
+**VERSION:** 0.3
 
-**LAST UPDATED:** 2025-12-30
-
+**LAST UPDATED:** 2026-01-06
 This document lists the components required to build the Full Sheet Curling
 Timer for a single sheet.
 
@@ -28,7 +27,13 @@ Timer for a single sheet.
 | BC337 NPN Transistor | 4 | General purpose NPN transistor to drive Piezo | [Amazon](https://www.amazon.com/dp/B07T61SY9Y) | $0.04 | $9.00 | Pack comes with assorted transistors, and way too many. Will optimize later based on actual schematic needs. |
 | Single Row Female Header Pins | 4 | 19-pin single row (1x19) | [Amazon](https://www.amazon.com/dp/B07CGGSDWF) | $0.17 | $10.00 | Pack comes with 60 pins |
 | 5 position DIP Switch | 4 | 5-position DIP switch for ID configuration | [Amazon](https://www.amazon.com/dp/B082GMFTKZ) | $0.65 | $6.50 | Pack comes with 10 |
-| Engineering Grade Retroreflective Tape | 1 | 1" x 30' roll for laser reflection | [Amazon](https://www.amazon.com/dp/B079DC1DK8) | $13.80 | $13.80 | Cut into smaller pieces as needed |
+| Bicycle Front Reflector | 4 | Pack with front and back | [Amazon](https://www.amazon.com/dp/B0DF2Q8QSN) | $1.25 | $12.50 | Pack comes with 10 |
+
+### Notes
+
+- Retroreflective tape was attempted but found to be unreliable at distances
+  beyond around 1-2 meters. The small rectangular reflectors provide a much more
+  reliable reflection for the laser sensors.
 
 For the resistors and capacitors, the BOM above includes many more than
 actually needed. The actual required values are as follows if you can source
