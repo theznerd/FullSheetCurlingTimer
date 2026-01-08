@@ -3,6 +3,10 @@
 #include "esp_log.h"
 #include <cstring>
 
+#include "os/os_mbuf.h"
+
+#include "status/fsct_status.hpp"
+
 // External reference to main applicaiton queue
 extern QueueHandle_t app_main_queue; // was previously called main_event_queue
 
@@ -51,24 +55,65 @@ int gatt_svr_chr_access_history(uint16_t conn_handle, uint16_t attr_handle,
 // Handler for State (Read + Notify)
 int gatt_svr_chr_access_state(uint16_t conn_handle, uint16_t attr_handle,
                               struct ble_gatt_access_ctxt *ctxt, void *arg) {
-    // Retrieve current state
-    // int rc = os_mbuf_append(ctxt->om, &state, sizeof(state));
-    return 0;
+    (void)conn_handle;
+    (void)attr_handle;
+    (void)arg;
+
+    if (ctxt->op != BLE_GATT_ACCESS_OP_READ_CHR) {
+        return BLE_ATT_ERR_UNLIKELY;
+    }
+
+    const FSCT::BeamStatus beam = FSCT::fsct_status_get_beam();
+    const FSCT::StatePacket payload = {
+        .beam_broken = static_cast<uint8_t>(beam.beam_broken ? 1 : 0),
+    };
+
+    const int rc = os_mbuf_append(ctxt->om, &payload, sizeof(payload));
+    return (rc == 0) ? 0 : BLE_ATT_ERR_INSUFFICIENT_RES;
 }
 
 // Handler for Live Timing (Notify)
 int gatt_svr_chr_access_live(uint16_t conn_handle, uint16_t attr_handle,
                               struct ble_gatt_access_ctxt *ctxt, void *arg) {
-    // Live timing data is typically pushed via notifications
-    return 0;
+    (void)conn_handle;
+    (void)attr_handle;
+    (void)arg;
+
+    // This characteristic is primarily for notifications, but we also support READ
+    // so clients can fetch the latest cached values without subscribing.
+    if (ctxt->op != BLE_GATT_ACCESS_OP_READ_CHR) {
+        return BLE_ATT_ERR_UNLIKELY;
+    }
+
+    const FSCT::BeamStatus beam = FSCT::fsct_status_get_beam();
+    const FSCT::LivePacket payload = {
+        .beam_broken = static_cast<uint8_t>(beam.beam_broken ? 1 : 0),
+        .beam_last_change_ms = beam.last_change_ms,
+    };
+
+    const int rc = os_mbuf_append(ctxt->om, &payload, sizeof(payload));
+    return (rc == 0) ? 0 : BLE_ATT_ERR_INSUFFICIENT_RES;
 }
 
 // Handler for Diagnostics (Read)
 int gatt_svr_chr_access_diag(uint16_t conn_handle, uint16_t attr_handle,
                               struct ble_gatt_access_ctxt *ctxt, void *arg) {
-    // Retrieve diagnostic data
-    // int rc = os_mbuf_append(ctxt->om, &diag_data, sizeof(diag_data));
-    return 0;
+    (void)conn_handle;
+    (void)attr_handle;
+    (void)arg;
+
+    if (ctxt->op != BLE_GATT_ACCESS_OP_READ_CHR) {
+        return BLE_ATT_ERR_UNLIKELY;
+    }
+
+    const FSCT::BatteryStatus battery = FSCT::fsct_status_get_battery();
+    const FSCT::DiagPacket payload = {
+        .battery_mv = battery.battery_mv,
+        .battery_percent = battery.battery_percent,
+    };
+
+    const int rc = os_mbuf_append(ctxt->om, &payload, sizeof(payload));
+    return (rc == 0) ? 0 : BLE_ATT_ERR_INSUFFICIENT_RES;
 }
 
 }

@@ -8,6 +8,9 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/queue.h"
 #include "freertos/task.h"
+#include "esp_timer.h"
+
+#include "status/fsct_status.hpp"
 
 namespace {
 constexpr gpio_num_t kBeamGpio = GPIO_NUM_21;
@@ -38,6 +41,9 @@ void beam_event_task(void* /*arg*/) {
     int last_level = gpio_get_level(kBeamGpio);
     ESP_LOGI(kBeamTag, "Initial: %s (level=%d)", last_level ? "BEAM BROKEN" : "beam intact", last_level);
 
+    // Publish initial beam status for GATT consumers.
+    FSCT::fsct_status_set_beam(last_level != 0, static_cast<uint64_t>(esp_timer_get_time() / 1000));
+
     while (true) {
         uint32_t gpio_num = 0;
         if (xQueueReceive(s_beam_event_queue, &gpio_num, portMAX_DELAY) != pdTRUE) {
@@ -56,6 +62,8 @@ void beam_event_task(void* /*arg*/) {
         // Per gpio_startup(): Low = beam intact, High = beam broken
         ESP_LOGI(kBeamTag, "%s", level ? "BEAM BROKEN" : "beam restored");
 
+        FSCT::fsct_status_set_beam(level != 0, static_cast<uint64_t>(esp_timer_get_time() / 1000));
+
         // Beep the buzzer briefly on beam break/restored
         gpio_set_level(GPIO_NUM_19, 1); // Buzzer ON
         vTaskDelay(50 / portTICK_PERIOD_MS);
@@ -63,6 +71,32 @@ void beam_event_task(void* /*arg*/) {
 
     }
 
+}
+
+void battery_status_task(void* /*arg*/) {
+    while (true) {
+        int battery_mv = -1;
+        int battery_percent = -1;
+
+        esp_err_t mv_err = battery_adc_read_battery_mv(&battery_mv);
+        if (mv_err != ESP_OK) {
+            ESP_LOGW("FSCTBattery", "battery_adc_read_battery_mv failed: %s", esp_err_to_name(mv_err));
+            battery_mv = -1;
+        }
+
+        esp_err_t pct_err = battery_adc_read_percent(&battery_percent);
+        if (pct_err != ESP_OK) {
+            ESP_LOGW("FSCTBattery", "battery_adc_read_percent failed: %s", esp_err_to_name(pct_err));
+            battery_percent = -1;
+        }
+
+        FSCT::fsct_status_set_battery(
+            battery_mv,
+            battery_percent,
+            static_cast<uint64_t>(esp_timer_get_time() / 1000));
+
+        vTaskDelay(pdMS_TO_TICKS(5000));
+    }
 }
 
 void start_beam_demo() {
@@ -121,14 +155,8 @@ extern "C" void app_main(void) {
     ESP_LOGI("FSCTMain", "Nimble initialized");
     printf("Hello from FSCT Timer!\n");
 
-    // Let's test out the battery ADC
-    int battery_mv = 0;
-    ESP_ERROR_CHECK(battery_adc_read_battery_mv(&battery_mv));
-    ESP_LOGI("FSCTMain", "Battery Voltage: %d mV", battery_mv);
-
-    int battery_percent = 0;
-    ESP_ERROR_CHECK(battery_adc_read_percent(&battery_percent));
-    ESP_LOGI("FSCTMain", "Battery Percentage: %d %%", battery_percent);
+    // Battery status cache refresh (for GATT diag reads)
+    xTaskCreate(battery_status_task, "battery_status", 4096, nullptr, 8, nullptr);
 
     // Beep the piezo three times
     for(int i = 0; i < 3; i++) {

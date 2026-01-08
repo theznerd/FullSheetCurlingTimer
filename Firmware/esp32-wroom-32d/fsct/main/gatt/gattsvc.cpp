@@ -21,7 +21,7 @@ static const struct ble_gatt_chr_def gatt_characteristics[] = {
     {
         .uuid = &FSCT::CHR_LIVE_UUID.u,
         .access_cb = FSCT::gatt_svr_chr_access_live,
-        .flags = BLE_GATT_CHR_F_NOTIFY,
+        .flags = BLE_GATT_CHR_F_READ | BLE_GATT_CHR_F_NOTIFY,
     },
     {
         .uuid = &FSCT::CHR_COMMAND_UUID.u,

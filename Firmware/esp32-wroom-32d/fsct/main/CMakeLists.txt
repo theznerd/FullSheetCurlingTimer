@@ -1,2 +1,2 @@
-idf_component_register(SRCS "./gpio/gpiostartup.cpp" "./gatt/gatt_handlers.cpp" "./gatt/gattstartup.cpp" "./gatt/gattsvc.cpp" "./adc/battery_adc.cpp" "main.cpp"
+idf_component_register(SRCS "./gpio/gpiostartup.cpp" "./gatt/gatt_handlers.cpp" "./gatt/gattstartup.cpp" "./gatt/gattsvc.cpp" "./adc/battery_adc.cpp" "./status/fsct_status.cpp" "main.cpp"
                     INCLUDE_DIRS "." "../include")

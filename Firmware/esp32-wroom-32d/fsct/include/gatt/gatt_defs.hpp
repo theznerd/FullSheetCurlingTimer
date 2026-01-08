@@ -50,4 +50,19 @@ namespace FSCT {
         ERROR = 0x01,
         TIMING = 0x02
     };
+
+    // Characteristic payloads (little-endian; packed for on-wire stability).
+    struct DiagPacket {
+        int32_t battery_mv;       // -1 if unavailable
+        int32_t battery_percent;  // -1 if unavailable
+    } __attribute__((packed));
+
+    struct StatePacket {
+        uint8_t beam_broken; // 0 = intact, 1 = broken
+    } __attribute__((packed));
+
+    struct LivePacket {
+        uint8_t beam_broken;        // 0 = intact, 1 = broken
+        uint64_t beam_last_change_ms; // ms since boot
+    } __attribute__((packed));
 }
