@@ -28,6 +28,8 @@ protection and proper alignment for accurate operation.
 
 - Might better to put battery on top. Laser is a touch high of the midpoint
 of the stone.
+- Laser alignment is very tempermental. Recommend decreasing tunnel diameter
+and hot gluing after aligned.
 
 ## Involved Components
 
