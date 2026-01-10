@@ -21,8 +21,13 @@ protection and proper alignment for accurate operation.
 
 - [x] **PCB Design**: Finalize the PCB design to determine exact mounting points
   and dimensions for the enclosure.
-- [ ] **Component Dimensions**: Verify the dimensions of all components for
+- [x] **Component Dimensions**: Verify the dimensions of all components for
   accurate enclosure design.
+
+## Current Notes from Field Tests
+
+- Might better to put battery on top. Laser is a touch high of the midpoint
+of the stone.
 
 ## Involved Components
 
