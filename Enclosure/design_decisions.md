@@ -8,7 +8,7 @@ protection and proper alignment for accurate operation.
 ## Design Considerations
 
 - **Durability**: The enclosure must be robust enough to withstand the
-  environment of a curling rink, including potential impacts and moisture.
+  environment of a curling sheet, including potential impacts and moisture.
 - **Alignment**: The design must ensure precise alignment of the laser and
   phototransistor for accurate detection.
 - **Ease of Assembly**: The enclosure should be easy to assemble and disassemble
@@ -27,9 +27,18 @@ protection and proper alignment for accurate operation.
 ## Current Notes from Field Tests
 
 - Might better to put battery on top. Laser is a touch high of the midpoint
-of the stone.
-- Laser alignment is very tempermental. Recommend decreasing tunnel diameter
-and hot gluing after aligned.
+  of the stone.
+  - Still considering this change which would allow for an adjustable base. The
+    adjustable base would allow for fine tuning the height and angle of the
+    laser, especially if a sheet is not level.
+- ~~Laser alignment is very tempermental. Recommend decreasing tunnel diameter and hot gluing after aligned.~~
+  - ~~Laser alignment is tempermental, but decreasing tunnel diameter did not yield
+    better results (it forced the laser to be pointed possiby off axis without a
+    way to adjust). Going back to a larger tunnel diameter and using hot glue to
+    fix the laser in place after alignment.~~
+  - Laser alignment is still an issue. Going to flip the laser module to the
+    bottom of the enclosure, and then add a small ball joint mount to allow for
+    fine tuning the laser angle when placing on the ice.
 
 ## Involved Components
 

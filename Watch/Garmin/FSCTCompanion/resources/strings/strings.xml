@@ -1,0 +1,7 @@
+<strings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
+    <string id="AppName">FSCT Companion</string>
+
+    <string id="first_launch">Hold Menu to Connect</string>
+    <string id="connect_title">Connect to Timer</string>
+    <string id="scan">Scan...</string>
+</strings>
