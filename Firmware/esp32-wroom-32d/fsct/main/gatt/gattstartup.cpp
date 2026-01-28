@@ -46,6 +46,11 @@ static void ble_app_advertise(void) {
     fields.num_uuids128 = 1;
     fields.uuids128_is_complete = 1;
 
+    std::string name = "Timer " + std::to_string(fsct_gpio_group);
+    fields.name = (uint8_t*)name.c_str();
+    fields.name_len = name.length();
+    fields.name_is_complete = 1;
+
     rc = ble_gap_adv_set_fields(&fields);
     if(rc != 0) {
         ESP_LOGE("GATT", "Error setting adv fields: %d", rc);
@@ -56,9 +61,9 @@ static void ble_app_advertise(void) {
     memset(&rsp_fields, 0, sizeof rsp_fields);
     
     // set the device name to "FSCT Timer - n"
-    std::string name = "FSCT Timer - " + std::to_string(fsct_gpio_group);
-    rsp_fields.name = (uint8_t*)name.c_str();
-    rsp_fields.name_len = name.length();
+    std::string longname = "FSCT Timer - " + std::to_string(fsct_gpio_group);
+    rsp_fields.name = (uint8_t*)longname.c_str();
+    rsp_fields.name_len = longname.length();
     rsp_fields.name_is_complete = 1;
 
     rc = ble_gap_adv_rsp_set_fields(&rsp_fields);

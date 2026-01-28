@@ -28,6 +28,7 @@ class FSCTBleDelegate extends BluetoothLowEnergy.BleDelegate {
                 if(contains(result.getServiceUuids(), _profileManager.FSCT_SERVICE_UUID)) {
                     System.println("Broadcasting scan result from delegate");
                     System.println("Device Name: " + result.getDeviceName());
+                    System.println("Device Raw Data:" + result.getRawData().toString());
                     // System.println("Service UUIDs: " + result.getServiceUuids().toString());
                     broadcastScanResult(result);
                 }
